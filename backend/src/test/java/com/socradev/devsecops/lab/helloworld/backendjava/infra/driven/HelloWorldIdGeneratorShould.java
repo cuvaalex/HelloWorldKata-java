@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class HelloWorldIdGeneratorTest {
+class HelloWorldIdGeneratorShould {
 
     private RandomHelloWorldIdGenerator randomHelloWorldIdGenerator;
 

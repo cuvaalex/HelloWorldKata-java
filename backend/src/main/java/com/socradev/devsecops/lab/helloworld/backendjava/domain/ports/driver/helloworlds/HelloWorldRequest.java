@@ -5,7 +5,6 @@ import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.exc
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.exceptions.ValidationMessage;
 import org.apache.commons.lang.StringUtils;
 
-
 public record HelloWorldRequest(String name) implements Command<HelloWorldResponse> {
 
     public HelloWorldRequest {

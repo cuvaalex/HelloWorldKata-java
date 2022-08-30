@@ -7,9 +7,11 @@ import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.Hel
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.exceptions.ValidationMessage;
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.helloworlds.HelloWorldRequest;
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.helloworlds.HelloWorldResponse;
+import org.springframework.stereotype.Component;
 
 import static com.socradev.devsecops.lab.helloworld.backendjava.domain.common.Guard.guard;
 
+@Component
 public class HelloWorldUseCase implements Command.Handler<HelloWorldRequest, HelloWorldResponse> {
 
     private final HelloWorldRepository repository;

@@ -2,15 +2,26 @@ package com.socradev.devsecops.lab.helloworld.backendjava.infra.driven;
 
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.HelloWorldIdGenerator;
 
-public class FakeHelloWorldIdGenerator implements HelloWorldIdGenerator {
-    private final Long helloWorldId;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
-    public FakeHelloWorldIdGenerator(Long helloWorldId) {
-        this.helloWorldId = helloWorldId;
+public class FakeHelloWorldIdGenerator implements HelloWorldIdGenerator {
+    private final Queue<Long> queue;
+
+    public FakeHelloWorldIdGenerator() {
+        this.queue = new ArrayDeque<>();
     }
 
     @Override
     public Long next() {
-        return helloWorldId;
+        if (queue.isEmpty()) {
+            throw new FakeException(FakeMessages.GENERATOR_DOES_NOT_HAVE_NEXT);
+        }
+
+        return queue.remove();
+    }
+
+    public void add(Long value) {
+        queue.add(value);
     }
 }
