@@ -1,14 +1,10 @@
 package com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.viewhelloworld;
 
+
 import an.awesome.pipelinr.Command;
-import lombok.*;
+import lombok.Builder;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 @Builder
-public class ViewHelloWorldRequest  {
+public record ViewHelloWorldRequest(Long helloWorldId) implements Command<ViewHelloWorldResponse> {
 
-    private String helloWorldId;
 }

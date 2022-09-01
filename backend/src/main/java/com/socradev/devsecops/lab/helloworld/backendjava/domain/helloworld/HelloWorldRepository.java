@@ -6,5 +6,7 @@ public interface HelloWorldRepository {
 
     Optional<HelloWorld> find(Long helloWorldId);
 
-    void add(HelloWorld helloWorld);
+    void add(HelloWorld entity);
+
+    Long nextHelloWorldId();
 }

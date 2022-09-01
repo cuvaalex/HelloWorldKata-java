@@ -8,6 +8,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@SuppressWarnings("rawtypes")
 @Configuration
 public class PipelinrConfiguration {
     @Bean

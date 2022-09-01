@@ -8,6 +8,8 @@ class BackendApplicationTests {
 
     @Test
     void contextLoads() {
+        var args = new String[]{};
+        BackendApplication.main(args);
     }
 
 }

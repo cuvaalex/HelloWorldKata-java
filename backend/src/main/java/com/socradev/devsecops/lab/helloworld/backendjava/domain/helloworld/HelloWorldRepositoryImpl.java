@@ -31,8 +31,13 @@ public class HelloWorldRepositoryImpl implements HelloWorldRepository{
     }
 
     @Override
-    public void add(HelloWorld helloWorld) {
-        var dto = new HelloWorldDto(helloWorld.id, helloWorld.name);
+    public void add(HelloWorld entity) {
+        var dto = new HelloWorldDto(entity.id(), entity.name());
         this.helloWorldStorage.add(dto);
+    }
+
+    @Override
+    public Long nextHelloWorldId() {
+        return this.helloWorldIdGenerator.next();
     }
 }

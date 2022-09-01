@@ -21,14 +21,13 @@ import static org.assertj.core.api.BDDAssertions.*;
 class HelloWorldUseCaseShould {
 
     private HelloWorldIdGenerator idGenerator;
-    private HelloWorldStorage storage;
     private HelloWorldRepository repository;
 
 
     @BeforeEach
     public void init() {
         idGenerator = new FakeHelloWorldIdGenerator();
-        storage = new FakeHelloWorldStorage();
+        HelloWorldStorage storage = new FakeHelloWorldStorage();
         repository = new HelloWorldRepositoryImpl(storage, idGenerator);
     }
 
@@ -53,7 +52,7 @@ class HelloWorldUseCaseShould {
         var request = new HelloWorldRequest(name);
         var expectedResponse = new HelloWorldResponse(helloWorldId);
 
-        var usecase = new HelloWorldUseCase(repository, idGenerator);
+        var usecase = new HelloWorldUseCase(repository);
         var response = usecase.handle(request);
 
         assertThat(response).isNotNull().isEqualTo(expectedResponse);

@@ -2,28 +2,32 @@ package com.socradev.devsecops.lab.helloworld.backendjava.domain.usecase;
 
 import an.awesome.pipelinr.Command;
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.helloworld.HelloWorldRepository;
-import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.HelloWorldIdGenerator;
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.viewhelloworld.ViewHelloWorldRequest;
 import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.viewhelloworld.ViewHelloWorldResponse;
+import org.springframework.stereotype.Component;
 
+import javax.swing.text.View;
 
-public class ViewHelloWorldUseCase { //implements Command.Handler<ViewHelloWorldRequest, ViewHelloWorldResponse> {
+@Component
+public class ViewHelloWorldUseCase implements Command.Handler<ViewHelloWorldRequest, ViewHelloWorldResponse> {
     private final HelloWorldRepository helloWorldRepository;
-    private final HelloWorldIdGenerator idGenerator;
 
-    public ViewHelloWorldUseCase(HelloWorldRepository helloWorldRepository, HelloWorldIdGenerator idGenerator) {
+    public ViewHelloWorldUseCase(HelloWorldRepository helloWorldRepository) {
         this.helloWorldRepository = helloWorldRepository;
-        this.idGenerator = idGenerator;
     }
 
-    //@Override
+    @Override
     public ViewHelloWorldResponse handle(ViewHelloWorldRequest viewHelloWorldRequest) {
-        return null;
+        var id = viewHelloWorldRequest.helloWorldId();
+        var entity = this.helloWorldRepository.find(id);
+        if(entity.isEmpty()){
+            return ViewHelloWorldResponse.builder().build();
+        }
+
+        return ViewHelloWorldResponse.builder()
+                .helloWorldId(entity.get().id())
+                .name(entity.get().name())
+                .build();
     }
 
-    //@Override
-    public boolean matches(ViewHelloWorldRequest command) {
-      //  return Command.Handler.super.matches(command);
-        return false;
-    }
 }
