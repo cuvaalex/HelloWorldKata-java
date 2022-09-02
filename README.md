@@ -36,15 +36,21 @@ Running PIT mutation testing:
 ./mvn pitest:mutationCoverage
 ```
 
+Running App Map coverage :
+
+It will automatically create during the test phase, to read the file check
+on https://appland.com/docs/appmap-overview.html,
+
 ## Reports
 
-See the `target\reports` directory for the generated reports for test results, code coverage and mutation testing.
+See the `target` directory for the generated reports for test results, code coverage and mutation testing.
 
 Reports:
 
-- target\surefire-reports
-- target\reports\jacoco
-- target\pit-reports
+- target/surefire-reports
+- target/site/jacoco
+- target/pit-reports
+- target/appmap
 
 ## Swagger API
 You can find Swagger API UI under `http://localhost:8080/swagger-ui/index.html`

@@ -1,6 +1,6 @@
 package com.socradev.devsecops.lab.helloworld.backendjava.domain.common.guards;
 
-import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driver.exceptions.ValidationException;
+import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driver.exceptions.ValidationException;
 
 import java.util.function.BooleanSupplier;
 

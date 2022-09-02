@@ -1,8 +1,8 @@
 package com.socradev.devsecops.lab.helloworld.backendjava.domain.helloworld;
 
-import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.HelloWorldDto;
-import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.HelloWorldIdGenerator;
-import com.socradev.devsecops.lab.helloworld.backendjava.domain.ports.driven.HelloWorldStorage;
+import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driven.HelloWorldDto;
+import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driven.HelloWorldIdGenerator;
+import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driven.HelloWorldStorage;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
