@@ -5,7 +5,10 @@ import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driven.Hello
 import com.socradev.devsecops.lab.helloworld.backendjava.core.ports.driven.HelloWorldStorage;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Component
 public class HelloWorldRepositoryImpl implements HelloWorldRepository{
 
@@ -28,6 +31,21 @@ public class HelloWorldRepositoryImpl implements HelloWorldRepository{
 
         var entity = new HelloWorld(dto.get().helloWorldId(), dto.get().name());
         return Optional.of(entity);
+    }
+
+    @Override
+    public Optional<List<HelloWorld>> findAll() {
+        var dtos = helloWorldStorage.findAll();
+        if(dtos.isEmpty()){
+            return Optional.empty();
+        }
+
+        var entities = dtos.get().stream()
+                .map(e -> HelloWorld.builder()
+                        .id(e.helloWorldId())
+                        .name(e.name())
+                        .build()).toList();
+        return Optional.of(entities);
     }
 
     @Override

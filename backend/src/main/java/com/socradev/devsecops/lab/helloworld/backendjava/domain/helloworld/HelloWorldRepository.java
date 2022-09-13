@@ -1,5 +1,6 @@
 package com.socradev.devsecops.lab.helloworld.backendjava.domain.helloworld;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface HelloWorldRepository {
@@ -9,4 +10,6 @@ public interface HelloWorldRepository {
     void add(HelloWorld entity);
 
     Long nextHelloWorldId();
+
+    Optional<List<HelloWorld>> findAll();
 }

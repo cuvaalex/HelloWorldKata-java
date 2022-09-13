@@ -27,7 +27,7 @@ public class JpaHelloWorldStorageShould {
 
     @Test
     public void return_empty_given_non_existence_helloworldId(){
-        var hellowordId = this.idGenerator.next();
+        var hellowordId = getHelloWorldId();
         var helloWorld = this.storage.find(hellowordId);
 
         assertThat(helloWorld).isEqualTo(Optional.empty());
@@ -45,6 +45,25 @@ public class JpaHelloWorldStorageShould {
         assertThat(retrieveHelloWorld).isNotNull().isPresent();
         assertThat(retrieveHelloWorld.get()).isEqualTo(dto);
 
+    }
+
+    @Test
+    public void return_list_of_helloworld() {
+        this.storage.add(new HelloWorldDto(getHelloWorldId(), "Alex"));
+        this.storage.add(new HelloWorldDto(getHelloWorldId(), "Tim"));
+        this.storage.add(new HelloWorldDto(getHelloWorldId(), "John"));
+
+        var retrieveListHelloWorld = this.storage.findAll();
+
+        assertThat(retrieveListHelloWorld).isNotNull().isPresent();
+        assertThat(retrieveListHelloWorld.get()).size().isEqualTo(3);
+
+    }
+
+    @Test
+    public void return_empty_if_not_any(){
+        var retrieveListHelloWorld = this.storage.findAll();
+        assertThat(retrieveListHelloWorld).isNotNull().isEmpty();
     }
 
     private Long getHelloWorldId() {
